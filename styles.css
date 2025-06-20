@@ -461,32 +461,43 @@ footer {
 .toast {
   position: fixed;
   bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #f44336; /* red by default */
-  color: white;
-  padding: 15px 20px;
-  border-radius: 5px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  z-index: 9999;
-  max-width: 300px;
+  right: 30px;
+  padding: 16px 20px;
+  background: #4caf50;
+  color: #fff;
+  border-radius: 6px;
   font-weight: 600;
-  font-size: 0.95rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.3s ease;
+  z-index: 9999;
+  overflow: hidden;
 }
 
-.toast.success {
-  background-color: #059669;
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .toast.error {
-  background-color: #dc2626;
+  background: #f44336;
 }
 
-.toast-timer {
+.toast .timer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   height: 4px;
-  background-color: rgba(255, 255, 255, 0.6);
-  margin-top: 10px;
-  transition: width 0.1s linear;
-  width: 100%;
-  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.8);
+  animation: shrink 5s linear forwards;
+}
+
+@keyframes shrink {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
 }
