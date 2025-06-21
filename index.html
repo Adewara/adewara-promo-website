@@ -24,8 +24,13 @@
     <header>
       <div class="container">
         <a href="#" class="logo">Adewara Damilare</a>
-        <nav>
-          <ul>
+
+        <button class="hamburger" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="sidebar">
+          <ul class="nav-links">
             <li><a href="#projects">My Work</a></li>
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -34,224 +39,186 @@
       </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="hero">
-      <div class="container">
-        <h1>I build websites that make Nigerian businesses money</h1>
-        <p class="subtitle">
-          48-hour delivery • Mobile-friendly • Free hosting
-        </p>
-        <a href="#projects" class="btn cta-btn scroll-link">See My Work ↓</a>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="section">
-      <div class="container">
-        <h2>Recent Work</h2>
-        <div class="project-grid">
-          <!-- Project 1 -->
-          <div class="project-card">
-            <div class="browser-window">
-              <div class="browser-header">
-                <div class="browser-dots">
-                  <span></span><span></span><span></span>
-                </div>
-                <div class="browser-url">the-wild-oasis-54321.netlify.app</div>
-              </div>
-              <div class="iframe-container">
-                <iframe
-                  src="https://the-wild-oasis-54321.netlify.app"
-                  class="project-iframe"
-                  loading="lazy"
-                  scrolling="no"
-                  sandbox="allow-same-origin allow-scripts"
-                ></iframe>
-              </div>
-            </div>
-            <h3>Hotel management app</h3>
-            <p>✓ 40% more sales</p>
-            <p>✓ React + Supabase</p>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="project-card">
-            <div class="browser-window">
-              <div class="browser-header">
-                <div class="browser-dots">
-                  <span></span><span></span><span></span>
-                </div>
-                <div class="browser-url">brittanychiang.com</div>
-              </div>
-              <div class="iframe-container">
-                <iframe
-                  src="https://brittanychiang.com"
-                  class="project-iframe"
-                  loading="lazy"
-                  scrolling="no"
-                  sandbox="allow-same-origin allow-scripts"
-                ></iframe>
-              </div>
-            </div>
-            <h3>Lagos E-commerce</h3>
-            <p>✓ 40% more sales</p>
-            <p>✓ React + Supabase</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pricing -->
-    <section id="pricing" class="section">
-      <div class="container">
-        <h2>Transparent Pricing</h2>
-        <div class="pricing-grid">
-          <div class="pricing-card">
-            <h3>1-Page Website</h3>
-            <p><del>₦50,000</del> <span class="discount">₦26,999</span></p>
-            <ul>
-              <li>✓ Free .com.ng domain</li>
-              <li>✓ Hosting included</li>
-              <li>✓ Mobile-ready</li>
-            </ul>
-          </div>
-          <div class="pricing-card">
-            <h3>3-Page Website</h3>
-            <p><del>₦75,000</del> <span class="discount">₦36,999</span></p>
-            <ul>
-              <li>✓ Everything in 1-page</li>
-              <li>✓ Basic SEO</li>
-              <li>✓ 1-month support</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section">
-      <div class="container">
-        <h2>Ready to Start?</h2>
-        <p>Leave a message:</p>
-
-        <!-- Netlify Contact Form -->
-        <form
-          name="contact"
-          method="POST"
-          data-netlify="true"
-          class="contact-form"
-          id="contact-form"
-        >
-          <input type="hidden" name="form-name" value="contact" />
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Your Email" required />
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            required
-          ></textarea>
-          <button type="submit" class="btn cta-btn">Send Message</button>
-
-          <!-- Success Message -->
-          <p
-            id="form-success"
-            style="display: none; color: green; margin-top: 15px"
-          >
-            ✅ Your message was sent successfully!
+    <div class="content-wrapper">
+      <!-- Hero Section -->
+      <section id="hero">
+        <div class="container">
+          <h1>I build websites that make Nigerian businesses money</h1>
+          <p class="subtitle">
+            48-hour delivery • Mobile-friendly • Free hosting
           </p>
-        </form>
-
-        <form name="contact" netlify hidden>
-          <input type="text" name="name" />
-          <input type="email" name="email" />
-          <textarea name="message"></textarea>
-        </form>
-
-        <h5>Contact me directly:</h5>
-        <div class="social-buttons">
-          <a
-            href="https://wa.me/2349042692212"
-            class="social-btn whatsapp"
-            aria-label="Chat on WhatsApp"
-          >
-            <i class="fab fa-whatsapp"></i>
-          </a>
-          <a
-            href="https://twitter.com/great_vado"
-            class="social-btn twitter"
-            aria-label="Visit my profile on X"
-          >
-            <i class="fab fa-x-twitter"></i>
-          </a>
+          <a href="#projects" class="btn cta-btn scroll-link">See My Work ↓</a>
         </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="section">
+        <div class="container">
+          <h2>Recent Work</h2>
+          <div class="project-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+              <div class="browser-window">
+                <div class="browser-header">
+                  <div class="browser-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="browser-url">The Wild Oasis Project</div>
+                </div>
+                <div class="iframe-container">
+                  <iframe
+                    src="https://the-wild-oasis-54321.netlify.app"
+                    class="project-iframe"
+                    loading="lazy"
+                    scrolling="no"
+                    sandbox="allow-same-origin allow-scripts"
+                  ></iframe>
+                </div>
+              </div>
+              <h3>Hotel management app</h3>
+              <p>✓ 40% more sales</p>
+              <p>✓ React + Supabase</p>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+              <div class="browser-window">
+                <div class="browser-header">
+                  <div class="browser-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="browser-url">brittanychiang.com</div>
+                </div>
+                <div class="iframe-container">
+                  <iframe
+                    src="https://brittanychiang.com"
+                    class="project-iframe"
+                    loading="lazy"
+                    scrolling="no"
+                    sandbox="allow-same-origin allow-scripts"
+                  ></iframe>
+                </div>
+              </div>
+              <h3>Lagos E-commerce</h3>
+              <p>✓ 40% more sales</p>
+              <p>✓ React + Supabase</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing -->
+      <section id="pricing" class="section">
+        <div class="container">
+          <h2>Transparent Pricing</h2>
+          <div class="pricing-grid">
+            <div class="pricing-card">
+              <h3>1-Page Website</h3>
+              <p><del>₦50,000</del> <span class="discount">₦26,999</span></p>
+              <ul>
+                <li>✓ Free .com.ng domain</li>
+                <li>✓ Hosting included</li>
+                <li>✓ Mobile-ready</li>
+              </ul>
+            </div>
+            <div class="pricing-card">
+              <h3>3-Page Website</h3>
+              <p><del>₦75,000</del> <span class="discount">₦36,999</span></p>
+              <ul>
+                <li>✓ Everything in 1-page</li>
+                <li>✓ Basic SEO</li>
+                <li>✓ 1-month support</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section">
+        <div class="container">
+          <h2>Ready to Start?</h2>
+          <p>Leave a message:</p>
+
+          <!-- Netlify Contact Form -->
+          <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            class="contact-form"
+            id="contact-form"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              required
+            ></textarea>
+            <button type="submit" class="btn cta-btn">Send Message</button>
+
+            <!-- Success Message -->
+            <p
+              id="form-success"
+              style="display: none; color: green; margin-top: 15px"
+            >
+              ✅ Your message was sent successfully!
+            </p>
+          </form>
+
+          <form name="contact" netlify hidden>
+            <input type="text" name="name" />
+            <input type="email" name="email" />
+            <textarea name="message"></textarea>
+          </form>
+
+          <h5>Contact me directly:</h5>
+          <div class="social-buttons">
+            <a
+              href="https://wa.me/2349042692212"
+              class="social-btn whatsapp"
+              aria-label="Chat on WhatsApp"
+            >
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a
+              href="https://twitter.com/great_vado"
+              class="social-btn twitter"
+              aria-label="Visit my profile on X"
+            >
+              <i class="fab fa-x-twitter"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scroll to Top Button -->
+      <button id="scrollToTop" title="Go to top">
+        <i class="fas fa-chevron-up"></i>
+      </button>
+
+      <!-- Footer -->
+      <footer>
+        <div class="container">
+          <p>© 2025 <span>Adewara Damilare</span>. All rights reserved.</p>
+        </div>
+      </footer>
+
+      <!-- Toast Notification -->
+      <div id="toast" class="toast" style="display: none">
+        <span id="toast-message">Something went wrong.</span>
+        <div id="toast-timer" class="toast-timer"></div>
       </div>
-    </section>
-
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTop" title="Go to top">
-      <i class="fas fa-chevron-up"></i>
-    </button>
-
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <p>© 2025 <span>Adewara Damilare</span>. All rights reserved.</p>
-      </div>
-    </footer>
-
-    <!-- Toast Notification -->
-    <div id="toast" class="toast" style="display: none">
-      <span id="toast-message">Something went wrong.</span>
-      <div id="toast-timer" class="toast-timer"></div>
     </div>
 
     <!-- JavaScript -->
+    <script type="module" src="script.js"></script>
     <script src="script.js"></script>
-    <script>
-      const form = document.getElementById("contact-form");
-      const toast = document.getElementById("toast");
-      const toastMsg = document.getElementById("toast-message");
-      const toastTimer = document.getElementById("toast-timer");
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const formData = new FormData(form);
-
-        fetch("/", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams(formData).toString(),
-        })
-          .then(() => {
-            form.reset();
-            showToast("✅ Your message was sent!", "success");
-          })
-          .catch(() => {
-            showToast("❌ Something went wrong. Please try again.", "error");
-          });
-      });
-
-      function showToast(message, type) {
-        toastMsg.textContent = message;
-        toast.className = "toast " + type;
-        toast.style.display = "block";
-        toastTimer.style.width = "100%";
-
-        let start = Date.now();
-        const duration = 5000;
-
-        const interval = setInterval(() => {
-          const elapsed = Date.now() - start;
-          const percent = 100 - (elapsed / duration) * 100;
-          toastTimer.style.width = percent + "%";
-
-          if (elapsed >= duration) {
-            clearInterval(interval);
-            toast.style.display = "none";
-          }
-        }, 50);
-      }
-    </script>
   </body>
 </html>

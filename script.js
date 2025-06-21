@@ -1,3 +1,5 @@
+import { initNavbar } from "./navbar.js";
+
 // Smooth scrolling for navigation links
 document.querySelectorAll(".scroll-link").forEach((link) => {
   link.addEventListener("click", function (e) {
@@ -83,7 +85,6 @@ function showToast(message, type = "success") {
     toast.classList.add("show");
   }, 100);
 
-  // Remove after 5s
   setTimeout(() => {
     toast.classList.remove("show");
     setTimeout(() => toast.remove(), 500);
@@ -117,3 +118,6 @@ if (form) {
       });
   });
 }
+
+// Initialize the navbar/hamburger menu
+document.addEventListener("DOMContentLoaded", initNavbar);

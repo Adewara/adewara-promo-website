@@ -48,6 +48,26 @@ html {
   }
 }
 
+@keyframes shrink {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* Section Animation */
 section {
   opacity: 0;
@@ -119,7 +139,7 @@ nav ul li a:hover {
 
 /* Hero Section */
 #hero {
-  min-height: calc(100vh - 80px); /* Fixed header height */
+  min-height: calc(100vh - 80px);
   padding: 0;
   background: linear-gradient(135deg, #f0f4ff 0%, #e6f0ff 100%);
   display: flex;
@@ -232,16 +252,17 @@ nav ul li a:hover {
 }
 
 /* Project Grid */
-.project-grid {
+.project-grid,
+.pricing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
 }
 
-.project-card {
+.project-card,
+.pricing-card {
   background: white;
   border-radius: 10px;
-  overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
 }
@@ -250,15 +271,51 @@ nav ul li a:hover {
   transform: translateY(-10px);
 }
 
-.project-card h3 {
+.project-card h3,
+.pricing-card h3 {
   padding: 20px 20px 10px;
   margin: 0;
+  font-size: 1.5rem;
 }
 
 .project-card p {
   padding: 0 20px 20px;
   margin: 0;
   color: #4b5563;
+}
+
+.pricing-card {
+  padding: 30px;
+  text-align: center;
+}
+
+.pricing-card p {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.discount {
+  color: var(--accent);
+}
+
+.pricing-card ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.pricing-card ul li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 25px;
+}
+
+.pricing-card ul li::before {
+  content: "✓";
+  color: var(--secondary);
+  position: absolute;
+  left: 0;
 }
 
 /* Browser Window */
@@ -313,55 +370,6 @@ nav ul li a:hover {
   display: block;
 }
 
-/* Pricing */
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-}
-
-.pricing-card {
-  background: white;
-  border-radius: 10px;
-  padding: 30px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.pricing-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-}
-
-.pricing-card p {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.discount {
-  color: var(--accent);
-}
-
-.pricing-card ul {
-  list-style: none;
-  padding: 0;
-  text-align: left;
-}
-
-.pricing-card ul li {
-  margin-bottom: 10px;
-  position: relative;
-  padding-left: 25px;
-}
-
-.pricing-card ul li::before {
-  content: "✓";
-  color: var(--secondary);
-  position: absolute;
-  left: 0;
-}
-
 /* Contact */
 #contact {
   background: linear-gradient(135deg, #f0f4ff 0%, #e6f0ff 100%);
@@ -373,47 +381,30 @@ nav ul li a:hover {
   font-size: 1.2rem;
 }
 
+.contact-form {
+  max-width: 500px;
+  margin: 30px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 15px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  width: 100%;
+}
+
 /* Footer */
 footer {
   background: var(--text);
   color: white;
   padding: 30px 0;
   text-align: center;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  header .container {
-    flex-direction: column;
-    padding: 15px 0;
-  }
-
-  nav ul {
-    margin-top: 15px;
-  }
-
-  nav ul li {
-    margin: 0 10px;
-  }
-
-  #hero h1 {
-    font-size: 2rem;
-  }
-
-  .section {
-    padding: 60px 0;
-  }
-}
-
-@media (max-width: 480px) {
-  #hero h1 {
-    font-size: 1.8rem;
-  }
-
-  .project-grid,
-  .pricing-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* Scroll To Top Button */
@@ -436,25 +427,6 @@ footer {
 
 #scrollToTop:hover {
   background: var(--secondary);
-}
-
-/* Contact Form */
-.contact-form {
-  max-width: 500px;
-  margin: 30px auto 0;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.contact-form input,
-.contact-form textarea {
-  padding: 12px 15px;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  resize: vertical;
-  width: 100%;
 }
 
 /* Toast container */
@@ -493,11 +465,126 @@ footer {
   animation: shrink 5s linear forwards;
 }
 
-@keyframes shrink {
-  0% {
-    width: 100%;
+/* Sidebar Navigation */
+.hamburger {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--primary);
+  display: none;
+}
+
+@media (max-width: 768px) {
+  header .container {
+    flex-direction: column;
+    padding: 15px 0;
   }
-  100% {
-    width: 0%;
+
+  nav ul {
+    margin-top: 15px;
+  }
+
+  nav ul li {
+    margin: 0 10px;
+  }
+
+  #hero h1 {
+    font-size: 2rem;
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  .hamburger {
+    display: block;
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    z-index: 1101;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100vh;
+    background: #fff;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 20px 20px;
+    align-items: flex-start;
+  }
+
+  .sidebar.show {
+    right: 0;
+  }
+
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sidebar ul li {
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideInRight 0.4s ease forwards;
+  }
+
+  .sidebar ul li:nth-child(1) {
+    animation-delay: 0.05s;
+  }
+  .sidebar ul li:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  .sidebar ul li:nth-child(3) {
+    animation-delay: 0.25s;
+  }
+
+  .sidebar ul li a {
+    display: block;
+    width: 100%;
+    padding: 8px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--primary);
+    border-top: 1px solid var(--primary);
+  }
+
+  .sidebar ul li:first-child a {
+    border-top: none;
+  }
+}
+
+/* Blur background when sidebar is open */
+.content-wrapper.blur {
+  filter: blur(5px);
+  transition: filter 0.3s ease;
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  #hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .project-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
   }
 }
