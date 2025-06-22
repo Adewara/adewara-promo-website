@@ -92,7 +92,7 @@
   .theme-toggle.mobile {
     position: absolute;
     top: 50%;
-    left: 20px;
+    left: 10px;
     transform: translateY(-50%);
     z-index: 1101;
   }
@@ -596,8 +596,8 @@ footer {
 @media (max-width: 768px) {
   header .container {
     flex-direction: column;
-    padding: 15px 0;
-    width: 94%; /* slightly less than default 90% */
+    padding: 15px 10px;
+    width: 98%; /* slightly less than default 90% */
   }
 
   .logo {
@@ -624,7 +624,7 @@ footer {
     display: flex;
     position: absolute;
     top: 50%;
-    right: 20px;
+    right: 10px;
     transform: translateY(-50%);
     z-index: 1101;
   }
