@@ -9,14 +9,14 @@ document.querySelectorAll(".scroll-link").forEach((link) => {
 
     if (targetElement) {
       window.scrollTo({
-        top: targetElement.offsetTop - 80, // offset for fixed header
+        top: targetElement.offsetTop - 80,
         behavior: "smooth",
       });
     }
   });
 });
 
-// Section animation on scroll
+// Section reveal on scroll
 function revealOnScroll() {
   const sections = document.querySelectorAll("section");
   const windowHeight = window.innerHeight;
@@ -32,7 +32,7 @@ function revealOnScroll() {
 window.addEventListener("load", revealOnScroll);
 window.addEventListener("scroll", revealOnScroll);
 
-// Project card hover effects
+// Project card hover effect
 document.querySelectorAll(".project-card").forEach((card) => {
   card.addEventListener("mouseenter", () => {
     card.style.transform = "translateY(-10px)";
@@ -45,7 +45,7 @@ document.querySelectorAll(".project-card").forEach((card) => {
   });
 });
 
-// Disable scroll in iframe
+// Disable scrolling inside iframe (if same-origin)
 document.querySelectorAll(".project-iframe").forEach((iframe) => {
   iframe.addEventListener("load", () => {
     try {
@@ -55,7 +55,7 @@ document.querySelectorAll(".project-iframe").forEach((iframe) => {
         iframeDoc.documentElement.style.overflow = "hidden";
       }
     } catch (err) {
-      // Ignore cross-origin errors
+      // Ignore cross-origin iframe restrictions
     }
   });
 });
@@ -73,6 +73,9 @@ scrollBtn.addEventListener("click", () => {
 
 // Toast Notification
 function showToast(message, type = "success") {
+  const existingToast = document.querySelector(".toast.show");
+  if (existingToast) existingToast.remove();
+
   const toast = document.createElement("div");
   toast.className = `toast ${type}`;
   toast.innerHTML = `
@@ -81,10 +84,7 @@ function showToast(message, type = "success") {
   `;
   document.body.appendChild(toast);
 
-  setTimeout(() => {
-    toast.classList.add("show");
-  }, 100);
-
+  setTimeout(() => toast.classList.add("show"), 100);
   setTimeout(() => {
     toast.classList.remove("show");
     setTimeout(() => toast.remove(), 500);
@@ -119,5 +119,66 @@ if (form) {
   });
 }
 
-// Initialize the navbar/hamburger menu
+// Initialize mobile navbar
 document.addEventListener("DOMContentLoaded", initNavbar);
+
+// Toggle header background on scroll
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+
+// Dark Mode Toggle Logic
+const sunIcons = document.querySelectorAll(".sun-icon");
+const moonIcons = document.querySelectorAll(".moon-icon");
+
+function sendThemeToIframes(mode) {
+  document
+    .querySelectorAll("iframe[data-supports-theme='true']")
+    .forEach((iframe) => {
+      try {
+        iframe.contentWindow.postMessage({ theme: mode }, "*");
+      } catch (e) {
+        console.warn("Could not postMessage to iframe", e);
+      }
+    });
+}
+
+function enableDarkMode() {
+  document.body.classList.add("dark");
+  localStorage.setItem("theme", "dark");
+  sunIcons.forEach((icon) => icon.classList.add("active"));
+  moonIcons.forEach((icon) => icon.classList.remove("active"));
+  sendThemeToIframes("dark");
+}
+
+function disableDarkMode() {
+  document.body.classList.remove("dark");
+  localStorage.setItem("theme", "light");
+  sunIcons.forEach((icon) => icon.classList.remove("active"));
+  moonIcons.forEach((icon) => icon.classList.add("active"));
+  sendThemeToIframes("light");
+}
+
+// Load saved theme
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "dark") {
+  enableDarkMode();
+} else {
+  disableDarkMode();
+}
+
+// Toggle on click
+sunIcons.forEach((icon) => icon.addEventListener("click", disableDarkMode));
+moonIcons.forEach((icon) => icon.addEventListener("click", enableDarkMode));
+
+// Sync iframe themes on initial load
+window.addEventListener("load", () => {
+  const theme = localStorage.getItem("theme") || "light";
+  sendThemeToIframes(theme);
+});

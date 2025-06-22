@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Force light mode early to avoid any possible flicker -->
+    <script>
+      if (localStorage.getItem("theme") !== "dark") {
+        document.documentElement.classList.remove("dark");
+        document.body.classList.remove("dark");
+      }
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -23,17 +30,41 @@
     <!-- Header -->
     <header>
       <div class="container">
+        <!-- Dark Mode Toggle for Mobile (top left) -->
+        <button
+          id="theme-toggle"
+          class="theme-toggle mobile"
+          aria-label="Toggle theme"
+        >
+          <i class="fas fa-moon moon-icon active"></i>
+          <i class="fas fa-sun sun-icon"></i>
+        </button>
+
+        <!-- Centered Logo -->
         <a href="#" class="logo">Adewara Damilare</a>
 
+        <!-- Hamburger Menu (hidden on desktop) -->
         <button class="hamburger" aria-label="Toggle menu">
           <i class="fas fa-bars"></i>
         </button>
 
+        <!-- Sidebar Navigation -->
         <nav class="sidebar">
           <ul class="nav-links">
-            <li><a href="#projects">My Work</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#projects" class="scroll-link">My Work</a></li>
+            <li><a href="#pricing" class="scroll-link">Pricing</a></li>
+            <li><a href="#contact" class="scroll-link">Contact</a></li>
+            <!-- Dark Mode Toggle for Desktop -->
+            <li class="desktop-toggle">
+              <button
+                id="theme-toggle-desktop"
+                class="theme-toggle"
+                aria-label="Toggle theme"
+              >
+                <i class="fas fa-moon moon-icon active"></i>
+                <i class="fas fa-sun sun-icon"></i>
+              </button>
+            </li>
           </ul>
         </nav>
       </div>
@@ -42,6 +73,7 @@
     <div class="content-wrapper">
       <!-- Hero Section -->
       <section id="hero">
+        <div id="particles-js"></div>
         <div class="container">
           <h1>I build websites that make Nigerian businesses money</h1>
           <p class="subtitle">
@@ -51,7 +83,7 @@
         </div>
       </section>
 
-      <!-- Projects -->
+      <!-- Projects Section -->
       <section id="projects" class="section">
         <div class="container">
           <h2>Recent Work</h2>
@@ -65,15 +97,21 @@
                   </div>
                   <div class="browser-url">The Wild Oasis Project</div>
                 </div>
-                <div class="iframe-container">
+                <a
+                  href="https://the-wild-oasis-54321.netlify.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <iframe
                     src="https://the-wild-oasis-54321.netlify.app"
                     class="project-iframe"
+                    data-supports-theme="true"
                     loading="lazy"
                     scrolling="no"
                     sandbox="allow-same-origin allow-scripts"
+                    data-supports-theme="true"
                   ></iframe>
-                </div>
+                </a>
               </div>
               <h3>Hotel management app</h3>
               <p>✓ 40% more sales</p>
@@ -89,15 +127,20 @@
                   </div>
                   <div class="browser-url">brittanychiang.com</div>
                 </div>
-                <div class="iframe-container">
+                <a
+                  href="https://brittanychiang.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <iframe
                     src="https://brittanychiang.com"
                     class="project-iframe"
                     loading="lazy"
                     scrolling="no"
                     sandbox="allow-same-origin allow-scripts"
+                    data-supports-theme="true"
                   ></iframe>
-                </div>
+                </a>
               </div>
               <h3>Lagos E-commerce</h3>
               <p>✓ 40% more sales</p>
@@ -107,7 +150,7 @@
         </div>
       </section>
 
-      <!-- Pricing -->
+      <!-- Pricing Section -->
       <section id="pricing" class="section">
         <div class="container">
           <h2>Transparent Pricing</h2>
@@ -134,7 +177,7 @@
         </div>
       </section>
 
-      <!-- Contact -->
+      <!-- Contact Section -->
       <section id="contact" class="section">
         <div class="container">
           <h2>Ready to Start?</h2>
@@ -219,6 +262,7 @@
 
     <!-- JavaScript -->
     <script type="module" src="script.js"></script>
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="particles-config.js"></script>
   </body>
 </html>
