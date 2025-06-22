@@ -597,6 +597,11 @@ footer {
   header .container {
     flex-direction: column;
     padding: 15px 0;
+    width: 94%; /* slightly less than default 90% */
+  }
+
+  .logo {
+    font-size: 1.275rem; /* 15% smaller than 1.5rem */
   }
 
   nav ul {
