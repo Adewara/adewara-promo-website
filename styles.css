@@ -36,30 +36,44 @@
   --whatsapp-hover: #128c7e;
   --twitter: #000;
   --twitter-hover: #111;
+  --github: #171515;
+  --github-hover: #333;
 }
 
 /* Dark Mode Root Overrides */
 .dark {
-  --text: #f3f4f6;
-  --white: #111827;
-  --light: #1f2937;
-  --muted-text: #9ca3af;
+  --text: #e4e4e7; /* Soft light text */
+  --white: #222327;
+  --light: #2e2f33;
+  --muted-text: #a1a1aa; /* Muted gray for secondary text */
 
-  --bg-hero-start: #1e293b;
-  --bg-hero-end: #0f172a;
+  --bg-hero-start: #1f1f21; /* Warm dark */
+  --bg-hero-end: #1a1a1c;
 
-  --browser-header-bg: #1e293b;
-  --browser-border: #334155;
-  --browser-url: #cbd5e1;
-  --border-color: #334155;
+  --browser-header-bg: #1f1f21;
+  --browser-border: #2a2a2e;
+  --browser-url: #d6d6db;
+  --border-color: #2a2a2e;
 
-  --shadow-card: rgba(255, 255, 255, 0.05);
-  --shadow-scroll: rgba(255, 255, 255, 0.1);
-  --shadow-toast: rgba(255, 255, 255, 0.05);
-  --shadow-sidebar: rgba(255, 255, 255, 0.05);
+  --shadow-card: rgba(0, 0, 0, 0.4);
+  --shadow-scroll: rgba(0, 0, 0, 0.5);
+  --shadow-toast: rgba(0, 0, 0, 0.3);
+  --shadow-sidebar: rgba(0, 0, 0, 0.25);
 
-  --twitter: #b0b0b0;
-  --twitter-hover: #dadada;
+  --shadow-cta: rgba(249, 115, 22, 0.3); /* #f97316 @ 30% opacity */
+  --shadow-cta-hover: rgba(249, 115, 22, 0.4); /* #f97316 @ 40% opacity */
+
+  --twitter: #d4d4d8;
+  --twitter-hover: #f4f4f5;
+
+  --primary: #f97316; /* Orange */
+  --secondary: #10b981; /* Emerald */
+  --accent: #facc15; /* Bright yellow */
+
+  --card-bg-dark: #1f1f22;
+
+  --github: #f4f4f5;
+  --github-hover: #e4e4e7;
 }
 
 /* New Dark Mode Toggle Styles */
@@ -318,11 +332,11 @@ nav ul li a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   text-decoration: none;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: var(--white);
   transition: all 0.3s ease;
 }
@@ -343,6 +357,16 @@ nav ul li a:hover {
 
 .twitter:hover {
   background: var(--twitter-hover);
+  transform: scale(1.1);
+}
+
+.github {
+  background: var(--github);
+  color: var(--white);
+}
+
+.github:hover {
+  background: var(--github-hover);
   transform: scale(1.1);
 }
 
@@ -429,6 +453,12 @@ nav ul li a:hover {
   color: var(--secondary);
   position: absolute;
   left: 0;
+}
+
+.dark .project-card,
+.dark .pricing-card,
+.dark .browser-window {
+  background: var(--card-bg-dark);
 }
 
 /* Browser Preview Frame */
@@ -783,7 +813,7 @@ footer {
 }
 
 .theme-toggle .sun-icon {
-  color: #facc15; /* bright yellow sun color */
+  color: var(--primary); /* ✅ uses dynamic value */
 }
 
 .dark .theme-toggle .moon-icon {
