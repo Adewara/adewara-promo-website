@@ -29,7 +29,7 @@ function revealOnScroll() {
   });
 }
 
-window.addEventListener("load", revealOnScroll);
+window.addEventListener("DOMContentLoaded", revealOnScroll);
 window.addEventListener("scroll", revealOnScroll);
 
 // Project card hover effect
@@ -234,3 +234,29 @@ window.addEventListener("load", () => {
   sendThemeToIframes(theme);
   loadParticlesConfig(theme); // run on initial page load
 });
+
+// Hide navbar on scroll down, show on scroll up
+let lastScrollY = window.scrollY;
+const hero = document.getElementById("hero");
+
+function handleNavbarVisibility() {
+  const currentScrollY = window.scrollY;
+  const heroBottom = hero?.offsetTop + hero?.offsetHeight || 0;
+
+  if (currentScrollY < heroBottom) {
+    header.classList.remove("hide");
+    header.classList.add("show");
+  } else {
+    if (currentScrollY > lastScrollY) {
+      header.classList.remove("show");
+      header.classList.add("hide");
+    } else {
+      header.classList.remove("hide");
+      header.classList.add("show");
+    }
+  }
+
+  lastScrollY = currentScrollY;
+}
+
+window.addEventListener("scroll", handleNavbarVisibility);

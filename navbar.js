@@ -20,6 +20,7 @@ export function initNavbar() {
     sidebar.setAttribute("aria-hidden", !isOpen);
 
     contentWrapper.classList.toggle("blur", isOpen);
+    document.body.style.overflow = isOpen ? "hidden" : "";
 
     // Reset and trigger animations
     if (isOpen) {
@@ -40,5 +41,16 @@ export function initNavbar() {
       hamburgerBtn.setAttribute("aria-expanded", false);
       sidebar.setAttribute("aria-hidden", true);
     });
+  });
+
+  // 3) KEYBOARD SUPPORT: close sidebar on Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && sidebar.classList.contains("show")) {
+      sidebar.classList.remove("show");
+      hamburgerIcon.className = "fas fa-bars";
+      contentWrapper.classList.remove("blur");
+      hamburgerBtn.setAttribute("aria-expanded", false);
+      sidebar.setAttribute("aria-hidden", true);
+    }
   });
 }

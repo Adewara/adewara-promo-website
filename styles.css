@@ -55,13 +55,12 @@
   --browser-url: #d6d6db;
   --border-color: #2a2a2e;
 
+  --shadow-cta: rgba(249, 115, 22, 0.3); /* #f97316 @ 30% opacity */
+  --shadow-cta-hover: rgba(249, 115, 22, 0.4); /* #f97316 @ 40% opacity */
   --shadow-card: rgba(0, 0, 0, 0.4);
   --shadow-scroll: rgba(0, 0, 0, 0.5);
   --shadow-toast: rgba(0, 0, 0, 0.3);
   --shadow-sidebar: rgba(0, 0, 0, 0.25);
-
-  --shadow-cta: rgba(249, 115, 22, 0.3); /* #f97316 @ 30% opacity */
-  --shadow-cta-hover: rgba(249, 115, 22, 0.4); /* #f97316 @ 40% opacity */
 
   --twitter: #d4d4d8;
   --twitter-hover: #f4f4f5;
@@ -220,6 +219,17 @@ header .container {
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
+}
+
+/* show/hide header on scroll */
+header.hide {
+  transform: translateY(-100%);
+  transition: transform 0.4s ease;
+}
+
+header.show {
+  transform: translateY(0);
+  transition: transform 0.4s ease;
 }
 
 .logo {
@@ -883,7 +893,7 @@ footer {
 }
 
 .view-live-btn:hover {
-  background: var(--secondary);
+  background: var(--accent);
   transform: translateY(-3px);
 }
 
